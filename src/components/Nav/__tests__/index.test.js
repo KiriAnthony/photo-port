@@ -8,6 +8,8 @@ const categories = [
 ]
 const mockCurrentCategory = jest.fn();
 const mockSetCurrentCategory = jest.fn();
+const mockContactSelected = jest.fn();
+const mockSetContactSelected = jest.fn();
 
 afterEach(cleanup);
 
@@ -17,7 +19,10 @@ describe('Nav component', () => {
         render(<Nav
             categories={categories}
             setCurrentCategory={mockSetCurrentCategory}
-            currentCategory={mockCurrentCategory} />)
+            currentCategory={mockCurrentCategory}
+            contactSelected={mockContactSelected}
+            setContactSelected={mockSetContactSelected}
+        />);
     });
 
     // snapshot test
@@ -25,7 +30,10 @@ describe('Nav component', () => {
         const { asFragment } = render(<Nav
             categories={categories}
             setCurrentCategory={mockSetCurrentCategory}
-            currentCategory={mockCurrentCategory} />);
+            currentCategory={mockCurrentCategory}
+            contactSelected={mockContactSelected}
+            setContactSelected={mockSetContactSelected}
+        />);
         expect(asFragment()).toMatchSnapshot();
     })
 });
@@ -35,7 +43,10 @@ describe('emoji is visible', () => {
         const { getByLabelText } = render(<Nav
             categories={categories}
             setCurrentCategory={mockSetCurrentCategory}
-            currentCategory={mockCurrentCategory} />);
+            currentCategory={mockCurrentCategory}
+            contactSelected={mockContactSelected}
+            setContactSelected={mockSetContactSelected}
+        />);
         expect(getByLabelText('camera')).toHaveTextContent('📸');
     })
 });
@@ -45,7 +56,10 @@ describe('links are visible', () => {
         const { getByTestId } = render(<Nav
             categories={categories}
             setCurrentCategory={mockSetCurrentCategory}
-            currentCategory={mockCurrentCategory} />);
+            currentCategory={mockCurrentCategory}
+            contactSelected={mockContactSelected}
+            setContactSelected={mockSetContactSelected}
+        />);
         expect(getByTestId('link')).toHaveTextContent('Oh Snap!');
         expect(getByTestId('about')).toHaveTextContent('About me');
     })
